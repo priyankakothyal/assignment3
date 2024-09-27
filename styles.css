@@ -1,0 +1,97 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  html, body {
+    height: 100%;
+    width: 100%;
+    font-family: Arial, sans-serif;
+  }
+  .nav  {
+    background-color: blue;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 15px;
+  }
+  /* Full-screen container */
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f4f4;
+  }
+  .container {
+    display: grid;
+    gap: 0px;
+    padding: 0px;
+    height: 100vh; /* Full viewport height */
+    width: 100vw;  /* Full viewport width */
+    grid-template-columns: 1fr; /* Single column for mobile by default */
+    grid-template-rows: auto;   /* Automatically adjust row heights */
+  }
+  /* Aligning section content (text) in the center */
+  .nav, .header, .content, .signup, .feature {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center;     /* Center vertically */
+    padding: 20px;
+    text-align: center;
+  }
+  .nav {background-color: blue;}
+  .header { background-color: #87CEFA; }
+  .content { background-color: #D3D3D3; }
+  .signup { background-color: #ADD8E6; }
+  .feature1 { background-color: #FFA07A; }
+  .feature2 { background-color: #9370DB; }
+  .feature3 { background-color: #FF6347; }
+  /* Mobile Layout (Default) */
+  .container {
+    grid-template-areas:
+       "nav"
+        "header"
+        "content"
+        "signup"
+        "feature1"
+        "feature2"
+        "feature3";
+    grid-template-columns: 1fr ;
+    grid-template-rows: 0fr 0.5fr 1fr 0.5fr 0.5fr 0.5fr 0.5fr;
+  }
+  /* Grid areas for mobile */
+  .header { grid-area: header; }
+  .content { grid-area: content; }
+  .signup { grid-area: signup; }
+  .feature1 { grid-area: feature1; }
+  .feature2 { grid-area: feature2; }
+  .feature3 { grid-area: feature3; }
+  /* Tablet Layout */
+  @media (min-width: 768px) {
+    .container {
+        grid-template-areas:
+        "nav nav "
+            "header header"
+            "content content"
+            "signup feature1"
+            "feature2 feature3";
+        grid-template-columns:  1fr 1fr;
+        grid-template-rows:  0fr 0.5fr 1fr 0.5fr 0.5fr auto;  /* Ensuring it expands to fill the screen */
+    }
+  }
+  /* Desktop Layout */
+  @media (min-width: 1024px) {
+    .container {
+        grid-template-areas:
+            "nav nav nav"
+            "header header header"
+            "feature1 feature2 feature3"
+            "signup signup signup"
+            "content content content";
+        grid-template-columns: repeat(3, 1fr);  /* Three equal columns */
+        grid-template-rows: 0fr 1fr 
